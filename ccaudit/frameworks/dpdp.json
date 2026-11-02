@@ -1,0 +1,14 @@
+{
+  "id": "dpdp",
+  "name": "India DPDP Act, 2023 (technical safeguards)",
+  "disclaimer": "Indicative engineering view of the Digital Personal Data Protection Act, 2023: section 8(5) reasonable security safeguards, section 8(6) breach intimation, and section 16 cross-border transfer. It is not legal advice. Check the current Act, the DPDP Rules and any sector regulator requirements (for example RBI or SEBI) with counsel.",
+  "controls": [
+    {"id": "S8(5)-ACC", "title": "Safeguards: access control and authentication", "checks": ["IAM-001", "IAM-002", "IAM-003", "IAM-004", "IAM-005", "IAM-006", "S3-001"]},
+    {"id": "S8(5)-ENC", "title": "Safeguards: encryption of personal data", "checks": ["S3-002", "S3-005", "ENC-001", "ENC-002", "ENC-003"]},
+    {"id": "S8(5)-NET", "title": "Safeguards: network and boundary protection", "checks": ["SG-001", "SG-002", "RDS-001"]},
+    {"id": "S8(5)-BCK", "title": "Safeguards: backup so personal data is not lost", "checks": ["BCK-001", "S3-003"]},
+    {"id": "S8(5)-LOG", "title": "Safeguards: logging and monitoring to detect compromise", "checks": ["LOG-001", "LOG-002", "LOG-003", "LOG-004", "S3-004"]},
+    {"id": "S8(6)", "title": "Ability to detect and investigate a breach so the Board and affected people can be informed", "checks": ["LOG-001", "LOG-002", "LOG-004"]},
+    {"id": "S16", "title": "Cross-border transfer: visibility of where personal data is stored", "checks": ["RES-001"]}
+  ]
+}

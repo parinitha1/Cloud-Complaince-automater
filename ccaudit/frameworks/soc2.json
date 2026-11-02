@@ -1,0 +1,14 @@
+{
+  "id": "soc2",
+  "name": "SOC 2 Trust Services Criteria",
+  "disclaimer": "Indicative mapping of common criteria to automated cloud checks. A SOC 2 report is an auditor's opinion on controls over a period; these checks only provide point-in-time technical evidence.",
+  "controls": [
+    {"id": "CC6.1", "title": "Logical access security and protection of information assets", "checks": ["IAM-001", "IAM-002", "IAM-003", "IAM-004", "S3-001", "S3-002", "ENC-001", "ENC-002", "ENC-003"]},
+    {"id": "CC6.3", "title": "Role-based access and least privilege", "checks": ["IAM-005", "IAM-006"]},
+    {"id": "CC6.6", "title": "Boundary protection against external threats", "checks": ["SG-001", "SG-002", "RDS-001"]},
+    {"id": "CC6.7", "title": "Protection of information in transmission", "checks": ["S3-005"]},
+    {"id": "CC7.2", "title": "Monitoring of systems for anomalies and security events", "checks": ["LOG-001", "LOG-002", "LOG-003", "LOG-004", "S3-004"]},
+    {"id": "A1.2", "title": "Backup and recovery infrastructure", "checks": ["BCK-001", "S3-003"]},
+    {"id": "C1.1", "title": "Identification and protection of confidential information", "checks": ["S3-001", "S3-002", "ENC-001", "ENC-002"]}
+  ]
+}

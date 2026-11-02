@@ -1,0 +1,18 @@
+{
+  "id": "iso27001",
+  "name": "ISO/IEC 27001:2022 (Annex A)",
+  "disclaimer": "Indicative mapping of technical Annex A controls to automated cloud checks. Passing these checks does not demonstrate certification readiness; organisational, people and process controls need separate evidence.",
+  "controls": [
+    {"id": "A.5.15", "title": "Access control", "checks": ["S3-001", "IAM-006"]},
+    {"id": "A.5.17", "title": "Authentication information", "checks": ["IAM-003", "IAM-005"]},
+    {"id": "A.5.23", "title": "Information security for use of cloud services", "checks": ["RES-001"]},
+    {"id": "A.8.2", "title": "Privileged access rights", "checks": ["IAM-001", "IAM-002", "IAM-006"]},
+    {"id": "A.8.3", "title": "Information access restriction", "checks": ["S3-001", "RDS-001"]},
+    {"id": "A.8.5", "title": "Secure authentication", "checks": ["IAM-001", "IAM-004"]},
+    {"id": "A.8.13", "title": "Information backup", "checks": ["S3-003", "BCK-001"]},
+    {"id": "A.8.15", "title": "Logging", "checks": ["LOG-001", "LOG-002", "LOG-004", "S3-004"]},
+    {"id": "A.8.16", "title": "Monitoring activities", "checks": ["LOG-001"]},
+    {"id": "A.8.20", "title": "Networks security", "checks": ["SG-001", "SG-002", "RDS-001"]},
+    {"id": "A.8.24", "title": "Use of cryptography", "checks": ["S3-002", "S3-005", "ENC-001", "ENC-002", "ENC-003", "LOG-003"]}
+  ]
+}

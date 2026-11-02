@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "provider": "aws",
+  "account_id": "444455556666",
+  "collected_at": "2026-11-01T12:00:00+00:00",
+  "regions": ["ap-south-1"],
+  "s3_buckets": [
+    {"name": "acme-secure-data", "region": "ap-south-1",
+     "public_access_block": {"block_public_acls": true, "ignore_public_acls": true, "block_public_policy": true, "restrict_public_buckets": true},
+     "encryption": true, "encryption_type": "aws:kms", "versioning": true, "logging": true, "enforces_tls": true}
+  ],
+  "security_groups": [
+    {"id": "ap-south-1:sg-0d4", "name": "alb-sg", "rules": [
+      {"protocol": "tcp", "port_from": 443, "port_to": 443, "cidr": "0.0.0.0/0"},
+      {"protocol": "tcp", "port_from": 22, "port_to": 22, "cidr": "10.0.0.0/8"}]}
+  ],
+  "iam": {
+    "root_mfa": true,
+    "root_access_keys": false,
+    "password_policy": {"min_length": 16},
+    "users": [
+      {"name": "alice", "console_access": true, "mfa": true,
+       "access_keys": [{"id": "AKIAEXAMPLEALI1", "active": true, "age_days": 12}], "attached_admin": false}
+    ]
+  },
+  "cloudtrail": [
+    {"name": "org-trail", "multi_region": true, "log_validation": true, "kms_encrypted": true, "logging": true}
+  ],
+  "log_groups": [
+    {"name": "ap-south-1:/app/prod", "retention_days": 365}
+  ],
+  "ebs_volumes": [
+    {"id": "vol-0ee5", "region": "ap-south-1", "encrypted": true}
+  ],
+  "rds_instances": [
+    {"id": "prod-postgres", "region": "ap-south-1", "encrypted": true, "publicly_accessible": false,
+     "backup_retention_days": 14, "multi_az": true}
+  ],
+  "kms_keys": [
+    {"id": "ap-south-1:9999abcd-aaaa-bbbb-cccc-1234567890ab", "region": "ap-south-1", "rotation_enabled": true}
+  ]
+}

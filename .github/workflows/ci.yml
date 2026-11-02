@@ -1,0 +1,22 @@
+name: ci
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -e ".[dev]"
+      - run: pytest -q
+      - name: Demo scan of the secure sample must pass the gate
+        run: python -m ccaudit scan --snapshot samples/secure_account.json --allowed-regions india --fail-on low --format json,html --out-dir reports
+      - uses: actions/upload-artifact@v4
+        with:
+          name: compliance-report
+          path: reports/

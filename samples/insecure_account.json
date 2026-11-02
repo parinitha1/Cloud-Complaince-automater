@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "provider": "aws",
+  "account_id": "111122223333",
+  "collected_at": "2026-11-01T12:00:00+00:00",
+  "regions": ["ap-south-1", "us-east-1"],
+  "s3_buckets": [
+    {"name": "acme-customer-exports", "region": "us-east-1",
+     "public_access_block": {"block_public_acls": false, "ignore_public_acls": false, "block_public_policy": true, "restrict_public_buckets": false},
+     "encryption": false, "versioning": false, "logging": false, "enforces_tls": false},
+    {"name": "acme-app-logs", "region": "ap-south-1",
+     "public_access_block": null,
+     "encryption": true, "encryption_type": "AES256", "versioning": true, "logging": false, "enforces_tls": false}
+  ],
+  "security_groups": [
+    {"id": "ap-south-1:sg-0a1", "name": "web-sg", "rules": [
+      {"protocol": "tcp", "port_from": 443, "port_to": 443, "cidr": "0.0.0.0/0"},
+      {"protocol": "tcp", "port_from": 22, "port_to": 22, "cidr": "0.0.0.0/0"}]},
+    {"id": "ap-south-1:sg-0b2", "name": "db-sg", "rules": [
+      {"protocol": "tcp", "port_from": 5432, "port_to": 5432, "cidr": "0.0.0.0/0"}]},
+    {"id": "us-east-1:sg-0c3", "name": "legacy-open", "rules": [
+      {"protocol": "-1", "port_from": null, "port_to": null, "cidr": "0.0.0.0/0"}]}
+  ],
+  "iam": {
+    "root_mfa": false,
+    "root_access_keys": true,
+    "password_policy": {"min_length": 8},
+    "users": [
+      {"name": "alice", "console_access": true, "mfa": true, "access_keys": [], "attached_admin": false},
+      {"name": "bob", "console_access": true, "mfa": false,
+       "access_keys": [{"id": "AKIAEXAMPLEBOB1", "active": true, "age_days": 412}], "attached_admin": true},
+      {"name": "ci-deployer", "console_access": false, "mfa": false,
+       "access_keys": [{"id": "AKIAEXAMPLECI01", "active": true, "age_days": 30}], "attached_admin": false}
+    ]
+  },
+  "cloudtrail": [
+    {"name": "regional-trail", "multi_region": false, "log_validation": false, "kms_encrypted": false, "logging": true}
+  ],
+  "log_groups": [
+    {"name": "ap-south-1:/app/prod", "retention_days": 14},
+    {"name": "ap-south-1:/app/audit", "retention_days": 400}
+  ],
+  "ebs_volumes": [
+    {"id": "vol-0aa1", "region": "ap-south-1", "encrypted": false},
+    {"id": "vol-0bb2", "region": "ap-south-1", "encrypted": true}
+  ],
+  "rds_instances": [
+    {"id": "prod-postgres", "region": "ap-south-1", "encrypted": false, "publicly_accessible": true,
+     "backup_retention_days": 1, "multi_az": false}
+  ],
+  "kms_keys": [
+    {"id": "ap-south-1:1234abcd-aaaa-bbbb-cccc-1234567890ab", "region": "ap-south-1", "rotation_enabled": false}
+  ]
+}
